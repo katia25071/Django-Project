@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+{% load widget_tweaks %}
+<html>
+
+<head>
+    <!-- <link rel="stylesheet" href="contact us form.css"> -->
+</head>
+
+<body>
+    <div class="container">
+        <h2>Contact us</h2>
+        <form id="form" method="POST">
+            {% csrf_token %}
+            <div class="s1">
+                <label for="fname">First Name: </label>
+                {% render_field form.firstname type="text" id="fname" placeholder="Enter your name here..." required="required" %}
+                <!--<input type="text" id="fname" name="firstname" placeholder="Enter your name here ..." required
+                    minlength="4" maxlength="8" size="10"> -->
+            </div>
+
+
+            <div class="s1">
+                <label for="lname">Last Name: </label>
+                {% render_field form.lastname type="text" id="lname" placeholder="Enter your name here..." required="required" %}
+                <!-- <input type="text" id="lname" name="lastname" placeholder="Enter your last name here..." required
+                    minlength="4" maxlength="8" size="10"> -->
+            </div>
+
+
+            <div class="s2">
+                <label for="phone">Enter a phone number:*</label><br><br>
+                {% render_field form.phonenumber type="text" id="phone" placeholder="012-345-6789" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required="required" %}
+                <!-- <input type="tel" id="phone" name="phonenumber" placeholder="012-345-6789"
+                        pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required=""> -->
+            </div>
+
+            <div class="s2">
+                <label for="email">Enter your email*:</label><br><br>
+                {% render_field form.email type="email" id="email"%}
+                <!-- <input type="email" id="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                        required><br> -->
+            </div>
+
+
+            <!-- <div class="fs3">
+                    </br><label for="Subject">Subject</label>
+                    <select id="Subject" name="choice">
+                        <option value="ANY"> ANY </option>
+                        <option value="Request">Request</option>
+                        <option value="Problem">Problem</option>
+                    </select>
+                </div> -->
+
+            <div class="col">
+                <div class="form-group">
+                    <label for="Expand your subject">Expand your subject:</label>
+                    {% render_field form.subject type="text" id="subject" placeholder="Expand your subject here..." cols="10" %}
+                    <!-- <textarea id="Expand subject" name="subject" placeholder="Expand your subject here..."
+                            cols="10"></textarea> -->
+                </div>
+            </div>
+
+            <input type="submit" value="Send" onclick="fun()">
+
+        </form>
+    </div>
+    <script>
+        function fun(){
+            alert("The form has been submitted!")
+        }   
+    </script>
+</body>
+
+</html>

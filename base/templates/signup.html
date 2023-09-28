@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+{% load static %}
+{% load widget_tweaks %}
+<html>
+
+<head>
+    <title>Signup Form</title>
+    <link rel="stylesheet" href="{% static 'css/stajl.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <!-- {% include 'nav.html' %} -->
+    <div class="wrap">
+        <div class="signup-title">
+            <h3>SignUp Form</h3>
+        </div>
+        {% if messages %}
+        <div class="messages1">
+            {% for message in messages %}
+            <div {% if message.tags %} class=" {{ message.tags }} " {% endif %}> {{ message }} </div>
+            {% endfor %}
+            </div>
+        {% endif %}
+        <form method="POST" class="signup">
+            {% csrf_token %}
+
+            <div class="field">
+                {% render_field form.username type="text" placeholder="Username" required="required"%}
+            </div>
+
+            <div class="field">
+                {% render_field form.email type="email" placeholder="Email Address" required="required"%}
+            </div>
+
+            <div class="field">
+                {% render_field form.password1 type="password" placeholder="Password" required="required" minlength="8"%}
+            </div>
+
+            <div class="field">
+                {% render_field form.password2 type="password" placeholder="Password" required="required" minlength="8"%}
+            </div>
+
+            <div class="field btn">
+                <div class="btn-layer"></div>
+                <input type="submit" value="Signup">
+            </div>
+        </form>
+    </div>
+
+
+</body>
+
+</html>
